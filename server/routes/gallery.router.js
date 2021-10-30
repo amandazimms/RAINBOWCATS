@@ -5,13 +5,26 @@ const galleryItems = require('../modules/gallery.data');
 // DO NOT MODIFY THIS FILE FOR BASE MODE
 
 // PUT Route
-router.put('/like/:id', (req, res) => {
+router.put('/addLike/:id', (req, res) => {
     console.log(req.params);
     const galleryId = req.params.id;
     console.log("hello?");
     for(const galleryItem of galleryItems) {
         if(galleryItem.id == galleryId) {
             galleryItem.likes += 1;
+            console.log('galleryItem.likes=', galleryItem.likes);
+        }
+    }
+    res.sendStatus(200);
+}); // END PUT Route
+
+router.put('/removeLike/:id', (req, res) => {
+    console.log(req.params);
+    const galleryId = req.params.id;
+    console.log("hello?");
+    for(const galleryItem of galleryItems) {
+        if(galleryItem.id == galleryId) {
+            galleryItem.likes -= 1;
             console.log('galleryItem.likes=', galleryItem.likes);
         }
     }

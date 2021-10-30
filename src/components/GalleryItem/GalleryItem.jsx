@@ -12,16 +12,23 @@ function GalleryItem(props){
 
   const toggleLiked = () => {
     if (!liked){ //if it wasn't yet liked, they click to Like it
-      liked;
+      setLiked(true);
       addLike();
     } else { //if it was already liked, unlike it
-      //todo add support for removing a like
+      setLiked(false);
+      removeLike();
     }
   }
 
   const addLike=()=>{
-    axios.put( `/gallery/like/${props.cat.id}`, props.cat ).then( (response)=>{
-      console.log('response back from axios.put:', response.data);
+    axios.put( `/gallery/addLike/${props.cat.id}`, props.cat ).then( (response)=>{
+      props.getCats();
+    }).catch((err)=>{
+      console.log('error:', err);
+    });
+  }
+  const removeLike=()=>{
+    axios.put( `/gallery/removeLike/${props.cat.id}`, props.cat ).then( (response)=>{
       props.getCats();
     }).catch((err)=>{
       console.log('error:', err);
