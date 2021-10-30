@@ -1,10 +1,10 @@
 import {useState} from "react";
+import axios from 'axios';
 
 function GalleryItem(props){
   //const [name, setName]=useState(null);
   const [show, setShow]=useState(true);
   const [liked, setLiked]=useState(false);
-  const [numLikes, setNumLikes]=useState(0);
 
   const toggleShow = () => {
     setShow(!show);
@@ -12,11 +12,22 @@ function GalleryItem(props){
 
   const toggleLiked = () => {
     if (!liked){ //if it wasn't yet liked, they click to Like it
-
+      liked;
+      addLike();
+    } else { //if it was already liked, unlike it
+      //todo add support for removing a like
     }
-    setLiked(liked + 1);
-    setNumLikes(liked + 1)
   }
+
+  const addLike=()=>{
+    axios.put( `/gallery/like/${props.cat.id}`, props.cat ).then( (response)=>{
+      console.log('response back from axios.put:', response.data);
+      props.getCats();
+    }).catch((err)=>{
+      console.log('error:', err);
+    });
+  }
+
   return(
     <div>
       { 
@@ -33,8 +44,14 @@ function GalleryItem(props){
       }
       {
         //if someone has liked it, display happy message with count, otherwise, sad 'no people' message
-        numLikes > 0 ?
-        <h3>{numLikes} people love this!</h3> :
+        props.cat.likes > 0 ?
+        <h3>{props.cat.likes} {
+                        //another conditional for singular vs plural grammar
+                        props.cat.likes > 1 ? 
+                        'people love ' :
+                        'person loves '
+                        } 
+                        this!</h3> :
         <h3>No people love this :(</h3>
       }
      
