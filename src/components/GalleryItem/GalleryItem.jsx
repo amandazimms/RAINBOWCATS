@@ -11,8 +11,8 @@ function GalleryItem(props){
     <div>
       {
         show ? 
-        <h2 onClick={toggleShow}>{JSON.stringify(props.cat.name)}</h2> :
-        <h3 onClick={toggleShow}>{JSON.stringify(props.cat.description)}</h3>
+        <img onClick={toggleShow} src={props.cat.path} alt={props.cat.description} />:
+        <h3 onClick={toggleShow}> {JSON.stringify(props.cat.description)}</h3>
       }
       
     </div>
