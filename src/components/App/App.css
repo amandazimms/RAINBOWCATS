@@ -18,7 +18,8 @@ h1 {
 }
 
 .galleryList {
-  width: 90%;
+  width: 85%;
+  margin: auto;
 
   display: flex;
   flex-direction: row;
@@ -26,7 +27,8 @@ h1 {
   justify-content: center;
   align-items: normal;
   align-content: normal;
-  gap: 10px;
+  column-gap: 10px;
+  row-gap: 30px;
 }
 
 .galleryItem {
@@ -37,6 +39,20 @@ h1 {
   align-self: auto;
   order: 0;
   padding: 10px;
+
+  height: 220px;
+  margin: auto;
+}
+
+.imageCropper {
+  width: 200px;
+  height: 150px;
+  overflow: hidden;
+}
+
+.catContent {
+  display: block; 
+  width: 200px;
 }
 
 .galleryItem:nth-child(7n - 6) { 
@@ -63,16 +79,4 @@ h1 {
   background-color: rgb(148, 84, 143);
 }
 
-/* .employees-container > div:nth-child(12n + 7), 
-.employees-container > div:nth-child(12n + 8), 
-.employees-container > div:nth-child(12n + 9), 
-.employees-container > div:nth-child(12n + 10), 
-.employees-container > div:nth-child(12n + 11), 
-.employees-container > div:nth-child(12n + 12) { 
-  background-color: rgb(242, 246, 247);
-} */
-
-.catContent {
-  display: block; 
-}
 

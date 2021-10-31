@@ -38,29 +38,32 @@ function GalleryItem(props){
 
   return (
     <div className="galleryItem">
+      <div className="imageCropper">
       { 
         // if show is toggled, display image. Otherwise, display description
         show ? 
-        <img onClick={toggleShow} className="catContent" width="200px" src={props.cat.path} alt={props.cat.description} />:
+        <img onClick={toggleShow} className="catContent" src={props.cat.path} alt={props.cat.description} /> :
         <h3 onClick={toggleShow} className="catContent">{props.cat.description}</h3>
       }
+      </div> 
       {
-        // if pic is already loved, render title as 'un-love'. Otherwise, render as 'love'
+        // \u26CF  \uF63B if pic is already loved, render title as 'un-love'. Otherwise, render as 'love'
         liked ?
-        <button onClick={toggleLiked}>un-love it</button> :
-        <button onClick={toggleLiked}>love it!</button> 
+        <button onClick={toggleLiked}>&#128571;</button> :
+        <button onClick={toggleLiked}>&#128570;</button> 
       }
+      <p></p>
       {
         //if someone has liked it, display happy message with count, otherwise, sad 'no people' message
         props.cat.likes > 0 ?
-        <h3>{props.cat.likes} {
+        <p>{props.cat.likes} {
                         //another conditional for singular vs plural grammar
                         props.cat.likes > 1 ? 
-                        'people love ' :
-                        'person loves '
+                        'people like ' :
+                        'person likes '
                         } 
-                        this!</h3> :
-        <h3>No people love this :(</h3>
+                        this</p> :
+        <p>No people like this :(</p>
       }
     
     </div>
