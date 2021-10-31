@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
+const pool = require('../modules/pool.js');
 const galleryItems = require('../modules/gallery.data');
 
 // DO NOT MODIFY THIS FILE FOR BASE MODE
 
-// PUT Route
+// PUT Routes
 router.put('/addLike/:id', (req, res) => {
     console.log(req.params);
     const galleryId = req.params.id;
@@ -16,8 +17,7 @@ router.put('/addLike/:id', (req, res) => {
         }
     }
     res.sendStatus(200);
-}); // END PUT Route
-
+}); 
 router.put('/removeLike/:id', (req, res) => {
     console.log(req.params);
     const galleryId = req.params.id;
@@ -29,11 +29,20 @@ router.put('/removeLike/:id', (req, res) => {
         }
     }
     res.sendStatus(200);
-}); // END PUT Route
+}); // END PUT Routes
+
 
 // GET Route
 router.get('/', (req, res) => {
-    res.send(galleryItems);
+    const queryString = `SELECT * FROM cats ORDER BY id`;
+
+    pool.query(queryString).then( (results) => {
+        res.send(results.rows);
+    
+      }).catch( (err) => {
+        console.log('error getting tasks from database:', err);
+        res.sendStatus(500);
+      })
 }); // END GET Route
 
 module.exports = router;
