@@ -9,7 +9,7 @@ function GalleryList(props){
       `Today's Flufferinos`,
       `Just Look At These Sweet BBs`, 
       `CATS!`,
-      `Please Enjoy the Cats}`,
+      `Please Enjoy the Cats`,
       `This Morning's Marvelous Meowers`,
       `Cats Cats Cats! Get Your Cats!`
     ]

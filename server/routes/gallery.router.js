@@ -7,28 +7,28 @@ const galleryItems = require('../modules/gallery.data');
 
 // PUT Routes
 router.put('/addLike/:id', (req, res) => {
-    console.log(req.params);
-    const galleryId = req.params.id;
-    console.log("hello?");
-    for(const galleryItem of galleryItems) {
-        if(galleryItem.id == galleryId) {
-            galleryItem.likes += 1;
-            console.log('galleryItem.likes=', galleryItem.likes);
-        }
-    }
-    res.sendStatus(200);
+    const queryString = `UPDATE cats 
+                SET likes = likes + 1
+                WHERE id = '${req.params.id}';`;
+    pool.query(queryString).then( (results) => {
+        res.sendStatus(200);
+    }).catch( (err) =>{
+        console.log('error updating task in database:', err);
+        res.sendStatus(500);
+
+    })
 }); 
 router.put('/removeLike/:id', (req, res) => {
-    console.log(req.params);
-    const galleryId = req.params.id;
-    console.log("hello?");
-    for(const galleryItem of galleryItems) {
-        if(galleryItem.id == galleryId) {
-            galleryItem.likes -= 1;
-            console.log('galleryItem.likes=', galleryItem.likes);
-        }
-    }
-    res.sendStatus(200);
+    const queryString = `UPDATE cats 
+                SET likes = likes - 1
+                WHERE id = '${req.params.id}';`;
+    pool.query(queryString).then( (results) => {
+        res.sendStatus(200);
+    }).catch( (err) =>{
+        console.log('error updating task in database:', err);
+        res.sendStatus(500);
+
+    })
 }); // END PUT Routes
 
 
