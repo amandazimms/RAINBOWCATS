@@ -2,28 +2,34 @@ import {useState} from "react";
 import axios from 'axios';
 
 function AddItem(props){
+  //AddItem is the area containing input fields for, you guessed it, adding an item.
+  //  it sends the user's inputted URL and description data to the router
+
   //const [name, setName]=useState(null); 
   
   const [inputs, setInputs] = useState( {} );
 
   const handleChange = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
+    //runs anytime the input fields change (every character)
+    const name = event.target.name; //name could be either "url" or "description" in our case
+    const value = event.target.value; //value could be, for example, "www.google.com/cat" or "a cute cat"
+    
+    //spread into values the properties above
     setInputs(values => ({...values, [name]: value}));
   }
 
   const handleSubmit = (event) => {
-    event.preventDefault();
-    addCat();
-  }
+    //happens upon clicking submit
+    event.preventDefault(); //need to learn more about this funciton from w3 schools
 
-
-  const addCat=()=>{
+    //use axios to send our input info (which looks like {path: bla.com, description: cute cat})
+    //to the router. Then it runs getCats() to refresh the page
     axios.post(`/gallery`, inputs).then ((response)=>{
       props.getCats();
     }).catch( (err)=>{
       console.log('error:', err);
     })
+      
   }
   
 

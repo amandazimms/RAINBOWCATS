@@ -22,6 +22,7 @@ h1 {
 }
 
 .galleryList {
+  /* parent component for flexbox */
   width: 85%;
   margin: auto;
 
@@ -36,6 +37,7 @@ h1 {
 }
 
 .galleryItem {
+  /* child components for flexbox */
   display: block;
   flex-grow: 0;
   flex-shrink: 1;
@@ -49,25 +51,29 @@ h1 {
 }
 
 .imageCropper {
+  /* for fitting the image more neatly into the rainbow-color box */
   width: 200px;
   height: 150px;
   overflow: hidden;
 }
 
 .catContent {
+  /* class containing *either* the photo or description, depending whether the 'show' state is true */
   display: block; 
   width: 200px;
 }
 
+/* these make every box part of the rainbow, in order. */
 .galleryItem:nth-child(7n - 6) { 
-  /*for child no. 1, 8, 16 */
+  /*red for child no. 1, 8, 16 */
   background-color: rgb(177, 59, 59);
 }
 .galleryItem:nth-child(7n - 5) {
-  /*for child no. 2, 9, 16 */
+  /*orange for child no. 2, 9, 16 */
   background-color: rgb(216, 133, 56);
 }
 .galleryItem:nth-child(7n - 4) {
+  /* etc, same patterns +1 for yellow and beyond */
   background-color: rgb(255, 227, 104);
 }
 .galleryItem:nth-child(7n - 3) {
