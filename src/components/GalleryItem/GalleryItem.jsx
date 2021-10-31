@@ -6,7 +6,7 @@ function GalleryItem(props){
   const [show, setShow]=useState(true);
   const [liked, setLiked]=useState(false);
 
-  const toggleShow = () => {
+  const toggleShow = () => {  
     setShow(!show);
   }
 
@@ -27,6 +27,7 @@ function GalleryItem(props){
       console.log('error:', err);
     });
   }
+
   const removeLike=()=>{
     axios.put( `/gallery/removeLike/${props.cat.id}`, props.cat ).then( (response)=>{
       props.getCats();
@@ -35,13 +36,13 @@ function GalleryItem(props){
     });
   }
 
-  return(
-    <div>
+  return (
+    <div className="galleryItem">
       { 
         // if show is toggled, display image. Otherwise, display description
         show ? 
-        <img onClick={toggleShow} src={props.cat.path} alt={props.cat.description} />:
-        <h3 onClick={toggleShow}>{props.cat.description}</h3>
+        <img onClick={toggleShow} className="catContent" width="200px" src={props.cat.path} alt={props.cat.description} />:
+        <h3 onClick={toggleShow} className="catContent">{props.cat.description}</h3>
       }
       {
         // if pic is already loved, render title as 'un-love'. Otherwise, render as 'love'
@@ -61,8 +62,7 @@ function GalleryItem(props){
                         this!</h3> :
         <h3>No people love this :(</h3>
       }
-     
-
+    
     </div>
   ) 
 }

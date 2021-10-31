@@ -13,3 +13,66 @@
   font-size: 1.5em;
 }
 
+h1 {
+  display: block;
+}
+
+.galleryList {
+  width: 90%;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: normal;
+  align-content: normal;
+  gap: 10px;
+}
+
+.galleryItem {
+  display: block;
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+  align-self: auto;
+  order: 0;
+  padding: 10px;
+}
+
+.galleryItem:nth-child(7n - 6) { 
+  /*for child no. 1, 8, 16 */
+  background-color: rgb(177, 59, 59);
+}
+.galleryItem:nth-child(7n - 5) {
+  /*for child no. 2, 9, 16 */
+  background-color: rgb(216, 133, 56);
+}
+.galleryItem:nth-child(7n - 4) {
+  background-color: rgb(255, 227, 104);
+}
+.galleryItem:nth-child(7n - 3) {
+  background-color: rgb(98, 182, 126);
+}
+.galleryItem:nth-child(7n - 2) {
+  background-color: rgb(60, 183, 192);
+}
+.galleryItem:nth-child(7n - 1) {
+  background-color: rgb(90, 96, 148);
+}
+.galleryItem:nth-child(7n) {
+  background-color: rgb(148, 84, 143);
+}
+
+/* .employees-container > div:nth-child(12n + 7), 
+.employees-container > div:nth-child(12n + 8), 
+.employees-container > div:nth-child(12n + 9), 
+.employees-container > div:nth-child(12n + 10), 
+.employees-container > div:nth-child(12n + 11), 
+.employees-container > div:nth-child(12n + 12) { 
+  background-color: rgb(242, 246, 247);
+} */
+
+.catContent {
+  display: block; 
+}
+
