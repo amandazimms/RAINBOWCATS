@@ -3,7 +3,23 @@ const router = express.Router();
 const pool = require('../modules/pool.js');
 const galleryItems = require('../modules/gallery.data');
 
-// DO NOT MODIFY THIS FILE FOR BASE MODE
+
+//POST Route
+router.post('/', (req,res)=>{
+    console.log('router.post! req.body is:', req.body);
+
+    let queryString = `INSERT INTO cats (path, description) VALUES ($1, $2)`;
+    let values = [req.body.path, req.body.description];
+
+    pool.query(queryString, values).then( (results)=>{
+        res.sendStatus(201);
+
+    }).catch((err)=>{
+        console.log('error posting cat:', err);
+        res.sendStatus(500);
+    });
+})
+
 
 // PUT Routes
 router.put('/addLike/:id', (req, res) => {

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import GalleryList from '../GalleryList/GalleryList';
 import axios from 'axios';
+import AddItem from '../AddItem/AddItem';
 
 function App() {
     const[cats, setCats] = useState( [] );
@@ -25,6 +26,7 @@ function App() {
         <header className="App-header">
           <h1 className="App-title">R A I N B O W C A T S</h1>
         </header>
+        <AddItem cats={cats} getCats={getCats}/>
         <GalleryList cats={cats} getCats={getCats}/>
       </div>
     );

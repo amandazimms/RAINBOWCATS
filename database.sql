@@ -1,7 +1,14 @@
 CREATE DATABASE react_gallery;
 
+CREATE TABLE cats (
+    id SERIAL PRIMARY KEY,
+    path varchar(400) NOT NULL,
+    description varchar (500) NOT NULL,
+    likes integer DEFAULT 0 NOT NULL 
+);
+
 INSERT INTO cats ("path", "description", "likes") 
-VALUES('images/catbag.jpeg','Photo of a cat in a bag'0),
+VALUES('images/catbag.jpeg','Photo of a cat in a bag',0),
 ('images/catbowl.jpeg','Photo of a cat in a bowl',0),
 ('images/cathat.jpeg','Photo of a cat wearing a hat',0),
 ('images/catpetcat.jpeg','Photo of a cat petting another cat',0),
