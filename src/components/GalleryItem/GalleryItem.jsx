@@ -3,7 +3,7 @@ import axios from 'axios';
 
 function GalleryItem(props){
   //A GalleryItem is an individual picture, along with its descrition, ID, and like count. 
-  //it is responsible for sending data about itself directly to the router 
+  //  it is responsible for sending data about itself directly to the router 
 
   //const [name, setName]=useState(null);
   const [show, setShow]=useState(true);
