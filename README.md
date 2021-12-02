@@ -36,9 +36,9 @@ React, Javascript, HTML, CSS, Node, Express, Axios, PostgreSQL
 ## Next Steps
 
 R A I N B O W C A T S  has room to improve! Here are additional features that may be added in the future:
-[ ] Support for removing a photo
-[ ] Ability to edit description and URL for a photo
-[ ] Additional styling 
+- [ ] Support for removing a photo
+- [ ] Ability to edit description and URL for a photo
+- [ ] Additional styling 
 
 
 ## Acknowledgement 
